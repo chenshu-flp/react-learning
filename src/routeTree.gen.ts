@@ -10,219 +10,259 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as Chapters9RouteImport } from './routes/chapters/9'
-import { Route as Chapters8RouteImport } from './routes/chapters/8'
-import { Route as Chapters7RouteImport } from './routes/chapters/7'
-import { Route as Chapters6RouteImport } from './routes/chapters/6'
-import { Route as Chapters5RouteImport } from './routes/chapters/5'
-import { Route as Chapters4RouteImport } from './routes/chapters/4'
-import { Route as Chapters3RouteImport } from './routes/chapters/3'
-import { Route as Chapters2RouteImport } from './routes/chapters/2'
-import { Route as Chapters14RouteImport } from './routes/chapters/14'
-import { Route as Chapters13RouteImport } from './routes/chapters/13'
-import { Route as Chapters12RouteImport } from './routes/chapters/12'
-import { Route as Chapters11RouteImport } from './routes/chapters/11'
-import { Route as Chapters10RouteImport } from './routes/chapters/10'
-import { Route as Chapters1RouteImport } from './routes/chapters/1'
+import { Route as ChaptersUseStateRouteImport } from './routes/chapters/use-state'
+import { Route as ChaptersUseRefRouteImport } from './routes/chapters/use-ref'
+import { Route as ChaptersUseReducerRouteImport } from './routes/chapters/use-reducer'
+import { Route as ChaptersUseEffectRouteImport } from './routes/chapters/use-effect'
+import { Route as ChaptersStateStructureRouteImport } from './routes/chapters/state-structure'
+import { Route as ChaptersSharingStateRouteImport } from './routes/chapters/sharing-state'
+import { Route as ChaptersReactiveInputRouteImport } from './routes/chapters/reactive-input'
+import { Route as ChaptersMemoizationRouteImport } from './routes/chapters/memoization'
+import { Route as ChaptersListsKeysRouteImport } from './routes/chapters/lists-keys'
+import { Route as ChaptersJsxRouteImport } from './routes/chapters/jsx'
+import { Route as ChaptersFormsRouteImport } from './routes/chapters/forms'
+import { Route as ChaptersEventsRouteImport } from './routes/chapters/events'
+import { Route as ChaptersErrorBoundariesRouteImport } from './routes/chapters/error-boundaries'
+import { Route as ChaptersCustomHooksRouteImport } from './routes/chapters/custom-hooks'
+import { Route as ChaptersContextRouteImport } from './routes/chapters/context'
+import { Route as ChaptersConditionalRenderingRouteImport } from './routes/chapters/conditional-rendering'
+import { Route as ChaptersComponentsPropsRouteImport } from './routes/chapters/components-props'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters9Route = Chapters9RouteImport.update({
-  id: '/chapters/9',
-  path: '/chapters/9',
+const ChaptersUseStateRoute = ChaptersUseStateRouteImport.update({
+  id: '/chapters/use-state',
+  path: '/chapters/use-state',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters8Route = Chapters8RouteImport.update({
-  id: '/chapters/8',
-  path: '/chapters/8',
+const ChaptersUseRefRoute = ChaptersUseRefRouteImport.update({
+  id: '/chapters/use-ref',
+  path: '/chapters/use-ref',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters7Route = Chapters7RouteImport.update({
-  id: '/chapters/7',
-  path: '/chapters/7',
+const ChaptersUseReducerRoute = ChaptersUseReducerRouteImport.update({
+  id: '/chapters/use-reducer',
+  path: '/chapters/use-reducer',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters6Route = Chapters6RouteImport.update({
-  id: '/chapters/6',
-  path: '/chapters/6',
+const ChaptersUseEffectRoute = ChaptersUseEffectRouteImport.update({
+  id: '/chapters/use-effect',
+  path: '/chapters/use-effect',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters5Route = Chapters5RouteImport.update({
-  id: '/chapters/5',
-  path: '/chapters/5',
+const ChaptersStateStructureRoute = ChaptersStateStructureRouteImport.update({
+  id: '/chapters/state-structure',
+  path: '/chapters/state-structure',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters4Route = Chapters4RouteImport.update({
-  id: '/chapters/4',
-  path: '/chapters/4',
+const ChaptersSharingStateRoute = ChaptersSharingStateRouteImport.update({
+  id: '/chapters/sharing-state',
+  path: '/chapters/sharing-state',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters3Route = Chapters3RouteImport.update({
-  id: '/chapters/3',
-  path: '/chapters/3',
+const ChaptersReactiveInputRoute = ChaptersReactiveInputRouteImport.update({
+  id: '/chapters/reactive-input',
+  path: '/chapters/reactive-input',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters2Route = Chapters2RouteImport.update({
-  id: '/chapters/2',
-  path: '/chapters/2',
+const ChaptersMemoizationRoute = ChaptersMemoizationRouteImport.update({
+  id: '/chapters/memoization',
+  path: '/chapters/memoization',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters14Route = Chapters14RouteImport.update({
-  id: '/chapters/14',
-  path: '/chapters/14',
+const ChaptersListsKeysRoute = ChaptersListsKeysRouteImport.update({
+  id: '/chapters/lists-keys',
+  path: '/chapters/lists-keys',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters13Route = Chapters13RouteImport.update({
-  id: '/chapters/13',
-  path: '/chapters/13',
+const ChaptersJsxRoute = ChaptersJsxRouteImport.update({
+  id: '/chapters/jsx',
+  path: '/chapters/jsx',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters12Route = Chapters12RouteImport.update({
-  id: '/chapters/12',
-  path: '/chapters/12',
+const ChaptersFormsRoute = ChaptersFormsRouteImport.update({
+  id: '/chapters/forms',
+  path: '/chapters/forms',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters11Route = Chapters11RouteImport.update({
-  id: '/chapters/11',
-  path: '/chapters/11',
+const ChaptersEventsRoute = ChaptersEventsRouteImport.update({
+  id: '/chapters/events',
+  path: '/chapters/events',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters10Route = Chapters10RouteImport.update({
-  id: '/chapters/10',
-  path: '/chapters/10',
+const ChaptersErrorBoundariesRoute = ChaptersErrorBoundariesRouteImport.update({
+  id: '/chapters/error-boundaries',
+  path: '/chapters/error-boundaries',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Chapters1Route = Chapters1RouteImport.update({
-  id: '/chapters/1',
-  path: '/chapters/1',
+const ChaptersCustomHooksRoute = ChaptersCustomHooksRouteImport.update({
+  id: '/chapters/custom-hooks',
+  path: '/chapters/custom-hooks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChaptersContextRoute = ChaptersContextRouteImport.update({
+  id: '/chapters/context',
+  path: '/chapters/context',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChaptersConditionalRenderingRoute =
+  ChaptersConditionalRenderingRouteImport.update({
+    id: '/chapters/conditional-rendering',
+    path: '/chapters/conditional-rendering',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ChaptersComponentsPropsRoute = ChaptersComponentsPropsRouteImport.update({
+  id: '/chapters/components-props',
+  path: '/chapters/components-props',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/chapters/1': typeof Chapters1Route
-  '/chapters/10': typeof Chapters10Route
-  '/chapters/11': typeof Chapters11Route
-  '/chapters/12': typeof Chapters12Route
-  '/chapters/13': typeof Chapters13Route
-  '/chapters/14': typeof Chapters14Route
-  '/chapters/2': typeof Chapters2Route
-  '/chapters/3': typeof Chapters3Route
-  '/chapters/4': typeof Chapters4Route
-  '/chapters/5': typeof Chapters5Route
-  '/chapters/6': typeof Chapters6Route
-  '/chapters/7': typeof Chapters7Route
-  '/chapters/8': typeof Chapters8Route
-  '/chapters/9': typeof Chapters9Route
+  '/chapters/components-props': typeof ChaptersComponentsPropsRoute
+  '/chapters/conditional-rendering': typeof ChaptersConditionalRenderingRoute
+  '/chapters/context': typeof ChaptersContextRoute
+  '/chapters/custom-hooks': typeof ChaptersCustomHooksRoute
+  '/chapters/error-boundaries': typeof ChaptersErrorBoundariesRoute
+  '/chapters/events': typeof ChaptersEventsRoute
+  '/chapters/forms': typeof ChaptersFormsRoute
+  '/chapters/jsx': typeof ChaptersJsxRoute
+  '/chapters/lists-keys': typeof ChaptersListsKeysRoute
+  '/chapters/memoization': typeof ChaptersMemoizationRoute
+  '/chapters/reactive-input': typeof ChaptersReactiveInputRoute
+  '/chapters/sharing-state': typeof ChaptersSharingStateRoute
+  '/chapters/state-structure': typeof ChaptersStateStructureRoute
+  '/chapters/use-effect': typeof ChaptersUseEffectRoute
+  '/chapters/use-reducer': typeof ChaptersUseReducerRoute
+  '/chapters/use-ref': typeof ChaptersUseRefRoute
+  '/chapters/use-state': typeof ChaptersUseStateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/chapters/1': typeof Chapters1Route
-  '/chapters/10': typeof Chapters10Route
-  '/chapters/11': typeof Chapters11Route
-  '/chapters/12': typeof Chapters12Route
-  '/chapters/13': typeof Chapters13Route
-  '/chapters/14': typeof Chapters14Route
-  '/chapters/2': typeof Chapters2Route
-  '/chapters/3': typeof Chapters3Route
-  '/chapters/4': typeof Chapters4Route
-  '/chapters/5': typeof Chapters5Route
-  '/chapters/6': typeof Chapters6Route
-  '/chapters/7': typeof Chapters7Route
-  '/chapters/8': typeof Chapters8Route
-  '/chapters/9': typeof Chapters9Route
+  '/chapters/components-props': typeof ChaptersComponentsPropsRoute
+  '/chapters/conditional-rendering': typeof ChaptersConditionalRenderingRoute
+  '/chapters/context': typeof ChaptersContextRoute
+  '/chapters/custom-hooks': typeof ChaptersCustomHooksRoute
+  '/chapters/error-boundaries': typeof ChaptersErrorBoundariesRoute
+  '/chapters/events': typeof ChaptersEventsRoute
+  '/chapters/forms': typeof ChaptersFormsRoute
+  '/chapters/jsx': typeof ChaptersJsxRoute
+  '/chapters/lists-keys': typeof ChaptersListsKeysRoute
+  '/chapters/memoization': typeof ChaptersMemoizationRoute
+  '/chapters/reactive-input': typeof ChaptersReactiveInputRoute
+  '/chapters/sharing-state': typeof ChaptersSharingStateRoute
+  '/chapters/state-structure': typeof ChaptersStateStructureRoute
+  '/chapters/use-effect': typeof ChaptersUseEffectRoute
+  '/chapters/use-reducer': typeof ChaptersUseReducerRoute
+  '/chapters/use-ref': typeof ChaptersUseRefRoute
+  '/chapters/use-state': typeof ChaptersUseStateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/chapters/1': typeof Chapters1Route
-  '/chapters/10': typeof Chapters10Route
-  '/chapters/11': typeof Chapters11Route
-  '/chapters/12': typeof Chapters12Route
-  '/chapters/13': typeof Chapters13Route
-  '/chapters/14': typeof Chapters14Route
-  '/chapters/2': typeof Chapters2Route
-  '/chapters/3': typeof Chapters3Route
-  '/chapters/4': typeof Chapters4Route
-  '/chapters/5': typeof Chapters5Route
-  '/chapters/6': typeof Chapters6Route
-  '/chapters/7': typeof Chapters7Route
-  '/chapters/8': typeof Chapters8Route
-  '/chapters/9': typeof Chapters9Route
+  '/chapters/components-props': typeof ChaptersComponentsPropsRoute
+  '/chapters/conditional-rendering': typeof ChaptersConditionalRenderingRoute
+  '/chapters/context': typeof ChaptersContextRoute
+  '/chapters/custom-hooks': typeof ChaptersCustomHooksRoute
+  '/chapters/error-boundaries': typeof ChaptersErrorBoundariesRoute
+  '/chapters/events': typeof ChaptersEventsRoute
+  '/chapters/forms': typeof ChaptersFormsRoute
+  '/chapters/jsx': typeof ChaptersJsxRoute
+  '/chapters/lists-keys': typeof ChaptersListsKeysRoute
+  '/chapters/memoization': typeof ChaptersMemoizationRoute
+  '/chapters/reactive-input': typeof ChaptersReactiveInputRoute
+  '/chapters/sharing-state': typeof ChaptersSharingStateRoute
+  '/chapters/state-structure': typeof ChaptersStateStructureRoute
+  '/chapters/use-effect': typeof ChaptersUseEffectRoute
+  '/chapters/use-reducer': typeof ChaptersUseReducerRoute
+  '/chapters/use-ref': typeof ChaptersUseRefRoute
+  '/chapters/use-state': typeof ChaptersUseStateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/chapters/1'
-    | '/chapters/10'
-    | '/chapters/11'
-    | '/chapters/12'
-    | '/chapters/13'
-    | '/chapters/14'
-    | '/chapters/2'
-    | '/chapters/3'
-    | '/chapters/4'
-    | '/chapters/5'
-    | '/chapters/6'
-    | '/chapters/7'
-    | '/chapters/8'
-    | '/chapters/9'
+    | '/chapters/components-props'
+    | '/chapters/conditional-rendering'
+    | '/chapters/context'
+    | '/chapters/custom-hooks'
+    | '/chapters/error-boundaries'
+    | '/chapters/events'
+    | '/chapters/forms'
+    | '/chapters/jsx'
+    | '/chapters/lists-keys'
+    | '/chapters/memoization'
+    | '/chapters/reactive-input'
+    | '/chapters/sharing-state'
+    | '/chapters/state-structure'
+    | '/chapters/use-effect'
+    | '/chapters/use-reducer'
+    | '/chapters/use-ref'
+    | '/chapters/use-state'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/chapters/1'
-    | '/chapters/10'
-    | '/chapters/11'
-    | '/chapters/12'
-    | '/chapters/13'
-    | '/chapters/14'
-    | '/chapters/2'
-    | '/chapters/3'
-    | '/chapters/4'
-    | '/chapters/5'
-    | '/chapters/6'
-    | '/chapters/7'
-    | '/chapters/8'
-    | '/chapters/9'
+    | '/chapters/components-props'
+    | '/chapters/conditional-rendering'
+    | '/chapters/context'
+    | '/chapters/custom-hooks'
+    | '/chapters/error-boundaries'
+    | '/chapters/events'
+    | '/chapters/forms'
+    | '/chapters/jsx'
+    | '/chapters/lists-keys'
+    | '/chapters/memoization'
+    | '/chapters/reactive-input'
+    | '/chapters/sharing-state'
+    | '/chapters/state-structure'
+    | '/chapters/use-effect'
+    | '/chapters/use-reducer'
+    | '/chapters/use-ref'
+    | '/chapters/use-state'
   id:
     | '__root__'
     | '/'
-    | '/chapters/1'
-    | '/chapters/10'
-    | '/chapters/11'
-    | '/chapters/12'
-    | '/chapters/13'
-    | '/chapters/14'
-    | '/chapters/2'
-    | '/chapters/3'
-    | '/chapters/4'
-    | '/chapters/5'
-    | '/chapters/6'
-    | '/chapters/7'
-    | '/chapters/8'
-    | '/chapters/9'
+    | '/chapters/components-props'
+    | '/chapters/conditional-rendering'
+    | '/chapters/context'
+    | '/chapters/custom-hooks'
+    | '/chapters/error-boundaries'
+    | '/chapters/events'
+    | '/chapters/forms'
+    | '/chapters/jsx'
+    | '/chapters/lists-keys'
+    | '/chapters/memoization'
+    | '/chapters/reactive-input'
+    | '/chapters/sharing-state'
+    | '/chapters/state-structure'
+    | '/chapters/use-effect'
+    | '/chapters/use-reducer'
+    | '/chapters/use-ref'
+    | '/chapters/use-state'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  Chapters1Route: typeof Chapters1Route
-  Chapters10Route: typeof Chapters10Route
-  Chapters11Route: typeof Chapters11Route
-  Chapters12Route: typeof Chapters12Route
-  Chapters13Route: typeof Chapters13Route
-  Chapters14Route: typeof Chapters14Route
-  Chapters2Route: typeof Chapters2Route
-  Chapters3Route: typeof Chapters3Route
-  Chapters4Route: typeof Chapters4Route
-  Chapters5Route: typeof Chapters5Route
-  Chapters6Route: typeof Chapters6Route
-  Chapters7Route: typeof Chapters7Route
-  Chapters8Route: typeof Chapters8Route
-  Chapters9Route: typeof Chapters9Route
+  ChaptersComponentsPropsRoute: typeof ChaptersComponentsPropsRoute
+  ChaptersConditionalRenderingRoute: typeof ChaptersConditionalRenderingRoute
+  ChaptersContextRoute: typeof ChaptersContextRoute
+  ChaptersCustomHooksRoute: typeof ChaptersCustomHooksRoute
+  ChaptersErrorBoundariesRoute: typeof ChaptersErrorBoundariesRoute
+  ChaptersEventsRoute: typeof ChaptersEventsRoute
+  ChaptersFormsRoute: typeof ChaptersFormsRoute
+  ChaptersJsxRoute: typeof ChaptersJsxRoute
+  ChaptersListsKeysRoute: typeof ChaptersListsKeysRoute
+  ChaptersMemoizationRoute: typeof ChaptersMemoizationRoute
+  ChaptersReactiveInputRoute: typeof ChaptersReactiveInputRoute
+  ChaptersSharingStateRoute: typeof ChaptersSharingStateRoute
+  ChaptersStateStructureRoute: typeof ChaptersStateStructureRoute
+  ChaptersUseEffectRoute: typeof ChaptersUseEffectRoute
+  ChaptersUseReducerRoute: typeof ChaptersUseReducerRoute
+  ChaptersUseRefRoute: typeof ChaptersUseRefRoute
+  ChaptersUseStateRoute: typeof ChaptersUseStateRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -234,102 +274,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/9': {
-      id: '/chapters/9'
-      path: '/chapters/9'
-      fullPath: '/chapters/9'
-      preLoaderRoute: typeof Chapters9RouteImport
+    '/chapters/use-state': {
+      id: '/chapters/use-state'
+      path: '/chapters/use-state'
+      fullPath: '/chapters/use-state'
+      preLoaderRoute: typeof ChaptersUseStateRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/8': {
-      id: '/chapters/8'
-      path: '/chapters/8'
-      fullPath: '/chapters/8'
-      preLoaderRoute: typeof Chapters8RouteImport
+    '/chapters/use-ref': {
+      id: '/chapters/use-ref'
+      path: '/chapters/use-ref'
+      fullPath: '/chapters/use-ref'
+      preLoaderRoute: typeof ChaptersUseRefRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/7': {
-      id: '/chapters/7'
-      path: '/chapters/7'
-      fullPath: '/chapters/7'
-      preLoaderRoute: typeof Chapters7RouteImport
+    '/chapters/use-reducer': {
+      id: '/chapters/use-reducer'
+      path: '/chapters/use-reducer'
+      fullPath: '/chapters/use-reducer'
+      preLoaderRoute: typeof ChaptersUseReducerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/6': {
-      id: '/chapters/6'
-      path: '/chapters/6'
-      fullPath: '/chapters/6'
-      preLoaderRoute: typeof Chapters6RouteImport
+    '/chapters/use-effect': {
+      id: '/chapters/use-effect'
+      path: '/chapters/use-effect'
+      fullPath: '/chapters/use-effect'
+      preLoaderRoute: typeof ChaptersUseEffectRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/5': {
-      id: '/chapters/5'
-      path: '/chapters/5'
-      fullPath: '/chapters/5'
-      preLoaderRoute: typeof Chapters5RouteImport
+    '/chapters/state-structure': {
+      id: '/chapters/state-structure'
+      path: '/chapters/state-structure'
+      fullPath: '/chapters/state-structure'
+      preLoaderRoute: typeof ChaptersStateStructureRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/4': {
-      id: '/chapters/4'
-      path: '/chapters/4'
-      fullPath: '/chapters/4'
-      preLoaderRoute: typeof Chapters4RouteImport
+    '/chapters/sharing-state': {
+      id: '/chapters/sharing-state'
+      path: '/chapters/sharing-state'
+      fullPath: '/chapters/sharing-state'
+      preLoaderRoute: typeof ChaptersSharingStateRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/3': {
-      id: '/chapters/3'
-      path: '/chapters/3'
-      fullPath: '/chapters/3'
-      preLoaderRoute: typeof Chapters3RouteImport
+    '/chapters/reactive-input': {
+      id: '/chapters/reactive-input'
+      path: '/chapters/reactive-input'
+      fullPath: '/chapters/reactive-input'
+      preLoaderRoute: typeof ChaptersReactiveInputRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/2': {
-      id: '/chapters/2'
-      path: '/chapters/2'
-      fullPath: '/chapters/2'
-      preLoaderRoute: typeof Chapters2RouteImport
+    '/chapters/memoization': {
+      id: '/chapters/memoization'
+      path: '/chapters/memoization'
+      fullPath: '/chapters/memoization'
+      preLoaderRoute: typeof ChaptersMemoizationRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/14': {
-      id: '/chapters/14'
-      path: '/chapters/14'
-      fullPath: '/chapters/14'
-      preLoaderRoute: typeof Chapters14RouteImport
+    '/chapters/lists-keys': {
+      id: '/chapters/lists-keys'
+      path: '/chapters/lists-keys'
+      fullPath: '/chapters/lists-keys'
+      preLoaderRoute: typeof ChaptersListsKeysRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/13': {
-      id: '/chapters/13'
-      path: '/chapters/13'
-      fullPath: '/chapters/13'
-      preLoaderRoute: typeof Chapters13RouteImport
+    '/chapters/jsx': {
+      id: '/chapters/jsx'
+      path: '/chapters/jsx'
+      fullPath: '/chapters/jsx'
+      preLoaderRoute: typeof ChaptersJsxRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/12': {
-      id: '/chapters/12'
-      path: '/chapters/12'
-      fullPath: '/chapters/12'
-      preLoaderRoute: typeof Chapters12RouteImport
+    '/chapters/forms': {
+      id: '/chapters/forms'
+      path: '/chapters/forms'
+      fullPath: '/chapters/forms'
+      preLoaderRoute: typeof ChaptersFormsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/11': {
-      id: '/chapters/11'
-      path: '/chapters/11'
-      fullPath: '/chapters/11'
-      preLoaderRoute: typeof Chapters11RouteImport
+    '/chapters/events': {
+      id: '/chapters/events'
+      path: '/chapters/events'
+      fullPath: '/chapters/events'
+      preLoaderRoute: typeof ChaptersEventsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/10': {
-      id: '/chapters/10'
-      path: '/chapters/10'
-      fullPath: '/chapters/10'
-      preLoaderRoute: typeof Chapters10RouteImport
+    '/chapters/error-boundaries': {
+      id: '/chapters/error-boundaries'
+      path: '/chapters/error-boundaries'
+      fullPath: '/chapters/error-boundaries'
+      preLoaderRoute: typeof ChaptersErrorBoundariesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/chapters/1': {
-      id: '/chapters/1'
-      path: '/chapters/1'
-      fullPath: '/chapters/1'
-      preLoaderRoute: typeof Chapters1RouteImport
+    '/chapters/custom-hooks': {
+      id: '/chapters/custom-hooks'
+      path: '/chapters/custom-hooks'
+      fullPath: '/chapters/custom-hooks'
+      preLoaderRoute: typeof ChaptersCustomHooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chapters/context': {
+      id: '/chapters/context'
+      path: '/chapters/context'
+      fullPath: '/chapters/context'
+      preLoaderRoute: typeof ChaptersContextRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chapters/conditional-rendering': {
+      id: '/chapters/conditional-rendering'
+      path: '/chapters/conditional-rendering'
+      fullPath: '/chapters/conditional-rendering'
+      preLoaderRoute: typeof ChaptersConditionalRenderingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chapters/components-props': {
+      id: '/chapters/components-props'
+      path: '/chapters/components-props'
+      fullPath: '/chapters/components-props'
+      preLoaderRoute: typeof ChaptersComponentsPropsRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -337,20 +398,23 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  Chapters1Route: Chapters1Route,
-  Chapters10Route: Chapters10Route,
-  Chapters11Route: Chapters11Route,
-  Chapters12Route: Chapters12Route,
-  Chapters13Route: Chapters13Route,
-  Chapters14Route: Chapters14Route,
-  Chapters2Route: Chapters2Route,
-  Chapters3Route: Chapters3Route,
-  Chapters4Route: Chapters4Route,
-  Chapters5Route: Chapters5Route,
-  Chapters6Route: Chapters6Route,
-  Chapters7Route: Chapters7Route,
-  Chapters8Route: Chapters8Route,
-  Chapters9Route: Chapters9Route,
+  ChaptersComponentsPropsRoute: ChaptersComponentsPropsRoute,
+  ChaptersConditionalRenderingRoute: ChaptersConditionalRenderingRoute,
+  ChaptersContextRoute: ChaptersContextRoute,
+  ChaptersCustomHooksRoute: ChaptersCustomHooksRoute,
+  ChaptersErrorBoundariesRoute: ChaptersErrorBoundariesRoute,
+  ChaptersEventsRoute: ChaptersEventsRoute,
+  ChaptersFormsRoute: ChaptersFormsRoute,
+  ChaptersJsxRoute: ChaptersJsxRoute,
+  ChaptersListsKeysRoute: ChaptersListsKeysRoute,
+  ChaptersMemoizationRoute: ChaptersMemoizationRoute,
+  ChaptersReactiveInputRoute: ChaptersReactiveInputRoute,
+  ChaptersSharingStateRoute: ChaptersSharingStateRoute,
+  ChaptersStateStructureRoute: ChaptersStateStructureRoute,
+  ChaptersUseEffectRoute: ChaptersUseEffectRoute,
+  ChaptersUseReducerRoute: ChaptersUseReducerRoute,
+  ChaptersUseRefRoute: ChaptersUseRefRoute,
+  ChaptersUseStateRoute: ChaptersUseStateRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

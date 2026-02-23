@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ChapterLayout from "#/components/ChapterLayout";
+import CodeBlock from "#/components/CodeBlock";
 
-export const Route = createFileRoute("/chapters/1")({ component: Chapter1 });
+export const Route = createFileRoute("/chapters/jsx")({ component: Chapter1 });
 
 function Chapter1() {
 	const name = "React";
@@ -9,11 +10,11 @@ function Chapter1() {
 		"HTML-like syntax",
 		"JavaScript expressions",
 		"Component composition",
-	];
+	]
 	const imgUrl = "https://picsum.photos/seed/jsx/300/200";
 
 	return (
-		<ChapterLayout chapterNumber={1}>
+		<ChapterLayout slug="jsx">
 			<div className="space-y-8">
 				<div>
 					<h3 className="text-lg font-semibold mb-3">Embedding Expressions</h3>
@@ -42,6 +43,12 @@ function Chapter1() {
 							</span>
 						</p>
 					</div>
+					<CodeBlock title="Embedding Expressions" code={`const name = 'React'
+
+<p>Hello, {name}!</p>
+<p>2 + 2 = {2 + 2}</p>
+<p>Current time: {new Date().toLocaleTimeString()}</p>
+<p>Random number: {Math.floor(Math.random() * 100)}</p>`} />
 				</div>
 
 				<div>
@@ -88,6 +95,17 @@ function Chapter1() {
 							</div>
 						</div>
 					</div>
+					<CodeBlock title="JSX vs HTML" code={`// className instead of class
+<div className="highlight">I have a className</div>
+
+// htmlFor instead of for
+<label htmlFor="demo-input">Label:</label>
+<input id="demo-input" />
+
+// style takes an object, not a string
+<div style={{ color: '#22d3ee', fontWeight: 'bold' }}>
+  Styled with a JS object
+</div>`} />
 				</div>
 
 				<div>
@@ -104,6 +122,13 @@ function Chapter1() {
 							))}
 						</ul>
 					</div>
+					<CodeBlock title="List Rendering" code={`const items = ['HTML-like syntax', 'JavaScript expressions', 'Component composition']
+
+<ul>
+  {items.map((item) => (
+    <li key={item}>{item}</li>
+  ))}
+</ul>`} />
 				</div>
 
 				<div>
@@ -119,5 +144,5 @@ function Chapter1() {
 				</div>
 			</div>
 		</ChapterLayout>
-	);
+	)
 }

@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useMemo, useCallback, memo } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/13')({ component: Chapter13 })
+export const Route = createFileRoute('/chapters/memoization')({ component: Chapter16 })
 
 function ExpensiveComputationDemo() {
   const [number, setNumber] = useState(30)
@@ -160,9 +161,9 @@ function FilteredListDemo() {
   )
 }
 
-function Chapter13() {
+function Chapter16() {
   return (
-    <ChapterLayout chapterNumber={13}>
+    <ChapterLayout slug="memoization">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">useMemo: Expensive Computation</h3>
@@ -171,6 +172,17 @@ function Chapter13() {
             recomputes when dependencies change:
           </p>
           <ExpensiveComputationDemo />
+          <CodeBlock title="useMemo" code={`const [count, setCount] = useState(30)
+const [color, setColor] = useState('cyan')
+
+// Only recomputes when count changes, not when color changes
+const fibonacci = useMemo(() => {
+  function fib(n: number): number {
+    if (n <= 1) return n
+    return fib(n - 1) + fib(n - 2)
+  }
+  return fib(count)
+}, [count])`} />
         </div>
 
         <div>
@@ -180,6 +192,28 @@ function Chapter13() {
             don't re-render unnecessarily:
           </p>
           <CallbackDemo />
+          <CodeBlock title="useCallback + React.memo" code={`const ChildButton = memo(function ChildButton({
+  onClick,
+  label,
+}: {
+  onClick: () => void
+  label: string
+}) {
+  console.log(\`\${label} rendered\`)  // won't re-log if onClick is stable
+  return <button onClick={onClick}>{label}</button>
+})
+
+function Parent() {
+  const [count, setCount] = useState(0)
+
+  // Without useCallback: new function every render → child re-renders
+  // With useCallback: same function reference → child skips re-render
+  const handleClick = useCallback(() => {
+    setCount((c) => c + 1)
+  }, [])
+
+  return <ChildButton onClick={handleClick} label="Increment" />
+}`} />
         </div>
 
         <div>
@@ -189,6 +223,18 @@ function Chapter13() {
             state changes:
           </p>
           <FilteredListDemo />
+          <CodeBlock title="Memoized Filtered List" code={`const [search, setSearch] = useState('')
+const [items] = useState(() =>
+  Array.from({ length: 5000 }, (_, i) => ({ id: i, name: \`Item \${i}\` }))
+)
+
+// Only recomputes when items or search changes
+const filtered = useMemo(() => {
+  if (!search) return items.slice(0, 50)
+  return items
+    .filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
+    .slice(0, 50)
+}, [items, search])`} />
         </div>
       </div>
     </ChapterLayout>

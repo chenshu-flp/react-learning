@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useReducer, useState } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/11')({ component: Chapter11 })
+export const Route = createFileRoute('/chapters/use-reducer')({ component: Chapter14 })
 
 interface Todo {
   id: number
@@ -191,9 +192,9 @@ function TodoApp() {
   )
 }
 
-function Chapter11() {
+function Chapter14() {
   return (
-    <ChapterLayout chapterNumber={11}>
+    <ChapterLayout slug="use-reducer">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">Todo App with useReducer</h3>
@@ -202,6 +203,38 @@ function Chapter11() {
             action describes what happened -- the reducer decides how state changes:
           </p>
           <TodoApp />
+          <CodeBlock title="useReducer Todo App" code={`type Action =
+  | { type: 'ADD'; text: string }
+  | { type: 'TOGGLE'; id: number }
+  | { type: 'DELETE'; id: number }
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case 'ADD':
+      return {
+        todos: [...state.todos, { id: state.nextId, text: action.text, done: false }],
+        nextId: state.nextId + 1,
+      }
+    case 'TOGGLE':
+      return {
+        ...state,
+        todos: state.todos.map((t) =>
+          t.id === action.id ? { ...t, done: !t.done } : t
+        ),
+      }
+    case 'DELETE':
+      return {
+        ...state,
+        todos: state.todos.filter((t) => t.id !== action.id),
+      }
+  }
+}
+
+const [state, dispatch] = useReducer(reducer, initialState)
+
+dispatch({ type: 'ADD', text: 'Learn useReducer' })
+dispatch({ type: 'TOGGLE', id: 1 })
+dispatch({ type: 'DELETE', id: 1 })`} />
         </div>
 
         <div>

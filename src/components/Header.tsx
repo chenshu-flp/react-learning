@@ -2,13 +2,12 @@ import { Link } from '@tanstack/react-router'
 
 import { useState } from 'react'
 import { Home, Menu, X } from 'lucide-react'
-import { chapters } from '#/lib/chapters'
+import { chapters, chapterPath } from '#/lib/chapters'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const coreBasics = chapters.filter((c) => c.category === 'Core Basics')
-  const intermediate = chapters.filter((c) => c.category === 'Intermediate')
+  const categories = ['Core Basics', 'Managing State', 'Intermediate'] as const
 
   return (
     <>
@@ -68,46 +67,31 @@ export default function Header() {
             <span className="font-medium">Home</span>
           </Link>
 
-          <div className="text-xs font-semibold uppercase tracking-wider text-gray-500 px-3 mb-2">
-            Core Basics
-          </div>
-          {coreBasics.map((chapter) => (
-            <Link
-              key={chapter.number}
-              to={chapter.path}
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-gray-800 transition-colors mb-0.5 text-sm"
-              activeProps={{
-                className:
-                  'flex items-center gap-3 p-2.5 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-0.5 text-sm',
-              }}
-            >
-              <span className="w-6 h-6 rounded bg-gray-800 text-cyan-400 flex items-center justify-center text-xs font-bold flex-shrink-0">
-                {chapter.number}
-              </span>
-              <span>{chapter.title}</span>
-            </Link>
-          ))}
-
-          <div className="text-xs font-semibold uppercase tracking-wider text-gray-500 px-3 mt-4 mb-2">
-            Intermediate
-          </div>
-          {intermediate.map((chapter) => (
-            <Link
-              key={chapter.number}
-              to={chapter.path}
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-gray-800 transition-colors mb-0.5 text-sm"
-              activeProps={{
-                className:
-                  'flex items-center gap-3 p-2.5 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-0.5 text-sm',
-              }}
-            >
-              <span className="w-6 h-6 rounded bg-gray-800 text-cyan-400 flex items-center justify-center text-xs font-bold flex-shrink-0">
-                {chapter.number}
-              </span>
-              <span>{chapter.title}</span>
-            </Link>
+          {categories.map((category) => (
+            <div key={category}>
+              <div className="text-xs font-semibold uppercase tracking-wider text-gray-500 px-3 mt-4 mb-2 first:mt-0">
+                {category}
+              </div>
+              {chapters
+                .filter((c) => c.category === category)
+                .map((chapter) => (
+                  <Link
+                    key={chapter.slug}
+                    to={chapterPath(chapter.slug)}
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-gray-800 transition-colors mb-0.5 text-sm"
+                    activeProps={{
+                      className:
+                        'flex items-center gap-3 p-2.5 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-0.5 text-sm',
+                    }}
+                  >
+                    <span className="w-6 h-6 rounded bg-gray-800 text-cyan-400 flex items-center justify-center text-xs font-bold flex-shrink-0">
+                      {chapters.indexOf(chapter) + 1}
+                    </span>
+                    <span>{chapter.title}</span>
+                  </Link>
+                ))}
+            </div>
           ))}
         </nav>
       </aside>

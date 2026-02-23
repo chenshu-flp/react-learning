@@ -2,8 +2,9 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Component, useState } from 'react'
 import type { ReactNode, ErrorInfo } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/14')({ component: Chapter14 })
+export const Route = createFileRoute('/chapters/error-boundaries')({ component: Chapter17 })
 
 interface ErrorBoundaryProps {
   children: ReactNode
@@ -147,9 +148,9 @@ function CustomFallbackDemo() {
   )
 }
 
-function Chapter14() {
+function Chapter17() {
   return (
-    <ChapterLayout chapterNumber={14}>
+    <ChapterLayout slug="error-boundaries">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">Basic Error Boundary</h3>
@@ -162,6 +163,37 @@ function Chapter14() {
               <BuggyCounter />
             </ErrorBoundary>
           </div>
+          <CodeBlock title="ErrorBoundary (class component)" code={`class ErrorBoundary extends React.Component<
+  { children: React.ReactNode; fallback?: React.ReactNode },
+  { hasError: boolean; error: Error | null }
+> {
+  state = { hasError: false, error: null }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error }
+  }
+
+  render() {
+    if (this.state.hasError) {
+      if (this.props.fallback) return this.props.fallback
+
+      return (
+        <div>
+          <p>Something went wrong.</p>
+          <button onClick={() => this.setState({ hasError: false, error: null })}>
+            Try Again
+          </button>
+        </div>
+      )
+    }
+    return this.props.children
+  }
+}
+
+// Usage
+<ErrorBoundary>
+  <BuggyCounter />
+</ErrorBoundary>`} />
         </div>
 
         <div>
@@ -171,6 +203,13 @@ function Chapter14() {
             taking down the whole UI:
           </p>
           <IsolationDemo />
+          <CodeBlock title="Isolating Errors" code={`// Each widget in its own boundary —
+// one crash doesn't take down the whole UI
+<div>
+  <ErrorBoundary><WidgetA /></ErrorBoundary>
+  <ErrorBoundary><WidgetB /></ErrorBoundary>
+  <ErrorBoundary><WidgetC /></ErrorBoundary>
+</div>`} />
         </div>
 
         <div>
@@ -179,6 +218,16 @@ function Chapter14() {
             Pass a custom fallback prop to show a tailored error message:
           </p>
           <CustomFallbackDemo />
+          <CodeBlock title="Custom Fallback" code={`<ErrorBoundary
+  fallback={
+    <div className="error-panel">
+      <p>Something went wrong!</p>
+      <p>This is a custom fallback message.</p>
+    </div>
+  }
+>
+  <BuggyComponent />
+</ErrorBoundary>`} />
         </div>
 
         <div>

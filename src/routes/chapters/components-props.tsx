@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import ChapterLayout from "#/components/ChapterLayout";
+import CodeBlock from "#/components/CodeBlock";
 
-export const Route = createFileRoute("/chapters/2")({ component: Chapter2 });
+export const Route = createFileRoute("/chapters/components-props")({ component: Chapter2 });
 
 function UserCard({
 	name,
@@ -24,7 +25,7 @@ function UserCard({
 				<p className="text-sm text-gray-400">{role}</p>
 			</div>
 		</div>
-	);
+	)
 }
 
 function Alert({
@@ -38,13 +39,13 @@ function Alert({
 		info: "border-blue-500 bg-blue-500/10 text-blue-300",
 		warning: "border-yellow-500 bg-yellow-500/10 text-yellow-300",
 		success: "border-green-500 bg-green-500/10 text-green-300",
-	};
+	}
 
 	return (
 		<div className={`border-l-4 rounded-r-lg p-4 ${colors[variant]}`}>
 			{children}
 		</div>
-	);
+	)
 }
 
 function Container({
@@ -61,12 +62,12 @@ function Container({
 			</div>
 			<div className="p-4">{children}</div>
 		</div>
-	);
+	)
 }
 
 function Chapter2() {
 	return (
-		<ChapterLayout chapterNumber={2}>
+		<ChapterLayout slug="components-props">
 			<div className="space-y-8">
 				<div>
 					<h3 className="text-lg font-semibold mb-3">Passing Props</h3>
@@ -90,6 +91,25 @@ function Chapter2() {
 							avatarSeed="carol"
 						/>
 					</div>
+					<CodeBlock title="UserCard Component" code={`function UserCard({ name, role, avatarSeed }: {
+  name: string
+  role: string
+  avatarSeed: string
+}) {
+  return (
+    <div className="flex items-center gap-4">
+      <img src={\`https://api.dicebear.com/9.x/initials/svg?seed=\${avatarSeed}\`} alt={name} />
+      <div>
+        <h4>{name}</h4>
+        <p>{role}</p>
+      </div>
+    </div>
+  )
+}
+
+// Usage - same component, different props
+<UserCard name="Alice Johnson" role="Frontend Developer" avatarSeed="alice" />
+<UserCard name="Bob Smith" role="Backend Developer" avatarSeed="bob" />`} />
 				</div>
 
 				<div>
@@ -106,6 +126,28 @@ function Chapter2() {
 						<Alert variant="warning">This is a warning alert.</Alert>
 						<Alert variant="success">This is a success alert.</Alert>
 					</div>
+					<CodeBlock title="Alert with Default Props" code={`function Alert({
+  variant = 'info',
+  children,
+}: {
+  variant?: 'info' | 'warning' | 'success'
+  children: React.ReactNode
+}) {
+  const colors = {
+    info: 'border-blue-500 bg-blue-500/10 text-blue-300',
+    warning: 'border-yellow-500 bg-yellow-500/10 text-yellow-300',
+    success: 'border-green-500 bg-green-500/10 text-green-300',
+  }
+
+  return (
+    <div className={\`border-l-4 rounded-r-lg p-4 \${colors[variant]}\`}>
+      {children}
+    </div>
+  )
+}
+
+<Alert>Uses default "info" variant</Alert>
+<Alert variant="warning">Warning alert</Alert>`} />
 				</div>
 
 				<div>
@@ -127,8 +169,26 @@ function Chapter2() {
 							<Alert variant="success">All systems operational.</Alert>
 						</Container>
 					</div>
+					<CodeBlock title="Container with children" code={`function Container({ title, children }: {
+  title: string
+  children: React.ReactNode
+}) {
+  return (
+    <div>
+      <div className="header">
+        <h4>{title}</h4>
+      </div>
+      <div className="body">{children}</div>
+    </div>
+  )
+}
+
+// Compose components inside each other
+<Container title="User Profile">
+  <UserCard name="Dana Lee" role="Full-Stack Developer" avatarSeed="dana" />
+</Container>`} />
 				</div>
 			</div>
 		</ChapterLayout>
-	);
+	)
 }

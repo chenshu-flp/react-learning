@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { createContext, useContext, useState } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/10')({ component: Chapter10 })
+export const Route = createFileRoute('/chapters/context')({ component: Chapter13 })
 
 type Theme = 'light' | 'dark'
 
@@ -168,9 +169,9 @@ function WithoutContextDemo() {
   )
 }
 
-function Chapter10() {
+function Chapter13() {
   return (
-    <ChapterLayout chapterNumber={10}>
+    <ChapterLayout slug="context">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">The Problem: Prop Drilling</h3>
@@ -187,6 +188,35 @@ function Chapter10() {
             read and toggle the theme:
           </p>
           <ThemeDemo />
+          <CodeBlock title="Context API" code={`const ThemeContext = createContext<{
+  theme: 'light' | 'dark'
+  toggle: () => void
+} | null>(null)
+
+function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark')
+
+  return (
+    <ThemeContext.Provider value={{
+      theme,
+      toggle: () => setTheme(t => t === 'dark' ? 'light' : 'dark'),
+    }}>
+      {children}
+    </ThemeContext.Provider>
+  )
+}
+
+function useTheme() {
+  const ctx = useContext(ThemeContext)
+  if (!ctx) throw new Error('useTheme must be inside ThemeProvider')
+  return ctx
+}
+
+// Any deeply nested component can access the theme
+function ThemedButton() {
+  const { theme, toggle } = useTheme()
+  return <button onClick={toggle}>Current: {theme}</button>
+}`} />
         </div>
       </div>
     </ChapterLayout>

@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/8')({ component: Chapter8 })
+export const Route = createFileRoute('/chapters/use-effect')({ component: Chapter8 })
 
 function DocumentTitleSync() {
   const [title, setTitle] = useState('React Workshop')
@@ -119,7 +120,7 @@ function WindowResizeTracker() {
 
 function Chapter8() {
   return (
-    <ChapterLayout chapterNumber={8}>
+    <ChapterLayout slug="use-effect">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">Document Title Sync</h3>
@@ -128,6 +129,13 @@ function Chapter8() {
             function restores the original title:
           </p>
           <DocumentTitleSync />
+          <CodeBlock title="Document Title Sync" code={`useEffect(() => {
+  const original = document.title
+  document.title = title
+  return () => {
+    document.title = original  // cleanup: restore original
+  }
+}, [title])  // re-run when title changes`} />
         </div>
 
         <div>
@@ -137,6 +145,15 @@ function Chapter8() {
             clears the interval to prevent memory leaks:
           </p>
           <TimerWithCleanup />
+          <CodeBlock title="Timer with Cleanup" code={`useEffect(() => {
+  if (!running) return  // no cleanup needed
+
+  const id = setInterval(() => {
+    setSeconds((s) => s + 1)
+  }, 1000)
+
+  return () => clearInterval(id)  // cleanup: stop the timer
+}, [running])  // re-run when running changes`} />
         </div>
 
         <div>
@@ -146,6 +163,14 @@ function Chapter8() {
             cleans up on unmount:
           </p>
           <WindowResizeTracker />
+          <CodeBlock title="Window Resize Listener" code={`useEffect(() => {
+  const update = () =>
+    setSize({ width: window.innerWidth, height: window.innerHeight })
+
+  update()                                  // run once on mount
+  window.addEventListener('resize', update)
+  return () => window.removeEventListener('resize', update)  // cleanup
+}, [])  // empty array = run once on mount`} />
         </div>
       </div>
     </ChapterLayout>

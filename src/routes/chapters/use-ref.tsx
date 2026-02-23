@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useRef, useEffect } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/9')({ component: Chapter9 })
+export const Route = createFileRoute('/chapters/use-ref')({ component: Chapter12 })
 
 function FocusDemo() {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -169,9 +170,9 @@ function PreviousValueDemo() {
   )
 }
 
-function Chapter9() {
+function Chapter12() {
   return (
-    <ChapterLayout chapterNumber={9}>
+    <ChapterLayout slug="use-ref">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">Focus Management</h3>
@@ -179,6 +180,12 @@ function Chapter9() {
             useRef provides a reference to a DOM element for imperative operations:
           </p>
           <FocusDemo />
+          <CodeBlock title="Focus Management" code={`const inputRef = useRef<HTMLInputElement>(null)
+
+<input ref={inputRef} />
+<button onClick={() => inputRef.current?.focus()}>
+  Focus Input
+</button>`} />
         </div>
 
         <div>
@@ -187,6 +194,12 @@ function Chapter9() {
             Refs persist across renders without causing re-renders when mutated:
           </p>
           <RenderCountDemo />
+          <CodeBlock title="Render Counter" code={`const renderCount = useRef(0)
+
+// Mutating a ref does NOT cause a re-render
+renderCount.current += 1
+
+<p>This component rendered {renderCount.current} times</p>`} />
         </div>
 
         <div>
@@ -203,6 +216,15 @@ function Chapter9() {
             Use a ref to remember the previous value after each render:
           </p>
           <PreviousValueDemo />
+          <CodeBlock title="Previous Value Pattern" code={`const [value, setValue] = useState(0)
+const prevValue = useRef(0)
+
+useEffect(() => {
+  prevValue.current = value  // update ref AFTER render
+}, [value])
+
+<p>Previous: {prevValue.current}</p>
+<p>Current: {value}</p>`} />
         </div>
       </div>
     </ChapterLayout>

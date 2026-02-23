@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect, useCallback } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/12')({ component: Chapter12 })
+export const Route = createFileRoute('/chapters/custom-hooks')({ component: Chapter15 })
 
 function useLocalStorage<T>(key: string, initialValue: T) {
   const [value, setValue] = useState<T>(() => {
@@ -221,9 +222,9 @@ function DebounceDemo() {
   )
 }
 
-function Chapter12() {
+function Chapter15() {
   return (
-    <ChapterLayout chapterNumber={12}>
+    <ChapterLayout slug="custom-hooks">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">useLocalStorage</h3>
@@ -231,6 +232,21 @@ function Chapter12() {
             A custom hook that syncs state with localStorage:
           </p>
           <LocalStorageDemo />
+          <CodeBlock title="useLocalStorage" code={`function useLocalStorage<T>(key: string, initialValue: T) {
+  const [value, setValue] = useState<T>(() => {
+    const stored = localStorage.getItem(key)
+    return stored ? JSON.parse(stored) : initialValue
+  })
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value))
+  }, [key, value])
+
+  return [value, setValue] as const
+}
+
+// Usage
+const [name, setName] = useLocalStorage('name', '')`} />
         </div>
 
         <div>
@@ -239,6 +255,25 @@ function Chapter12() {
             Encapsulate the resize listener in a reusable hook:
           </p>
           <WindowSizeDemo />
+          <CodeBlock title="useWindowSize" code={`function useWindowSize() {
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  })
+
+  useEffect(() => {
+    const handleResize = () => setSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  return size
+}
+
+const { width, height } = useWindowSize()`} />
         </div>
 
         <div>
@@ -255,6 +290,20 @@ function Chapter12() {
             Delay a value update until the user stops typing:
           </p>
           <DebounceDemo />
+          <CodeBlock title="useDebounce" code={`function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState(value)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay)
+    return () => clearTimeout(timer)
+  }, [value, delay])
+
+  return debouncedValue
+}
+
+// Usage: fires "search" 500ms after user stops typing
+const [text, setText] = useState('')
+const debouncedText = useDebounce(text, 500)`} />
         </div>
       </div>
     </ChapterLayout>

@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/4')({ component: Chapter4 })
+export const Route = createFileRoute('/chapters/events')({ component: Chapter4 })
 
 function ClickDemo() {
   const [clicks, setClicks] = useState(0)
@@ -101,7 +102,7 @@ function MouseTracker() {
 
 function Chapter4() {
   return (
-    <ChapterLayout chapterNumber={4}>
+    <ChapterLayout slug="events">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">Click Events</h3>
@@ -109,6 +110,24 @@ function Chapter4() {
             onClick and onDoubleClick handlers with access to the event object:
           </p>
           <ClickDemo />
+          <CodeBlock title="ClickDemo" code={`function ClickDemo() {
+  const [clicks, setClicks] = useState(0)
+
+  return (
+    <div>
+      <button onClick={(e) => {
+        setClicks((c) => c + 1)
+        console.log(\`click at (\${e.clientX}, \${e.clientY})\`)
+      }}>
+        Click me
+      </button>
+      <button onDoubleClick={() => setClicks(0)}>
+        Double-click to reset
+      </button>
+      <p>Clicks: {clicks}</p>
+    </div>
+  )
+}`} />
         </div>
 
         <div>
@@ -117,6 +136,25 @@ function Chapter4() {
             onKeyDown captures each keystroke and displays the last 10 keys:
           </p>
           <KeyboardDemo />
+          <CodeBlock title="KeyboardDemo" code={`function KeyboardDemo() {
+  const [keys, setKeys] = useState<string[]>([])
+
+  return (
+    <div>
+      <input
+        onKeyDown={(e) => {
+          setKeys((prev) => [...prev.slice(-9), e.key])
+        }}
+        placeholder="Type here..."
+      />
+      <div>
+        {keys.map((key, i) => (
+          <span key={\`\${key}-\${i}\`}>{key}</span>
+        ))}
+      </div>
+    </div>
+  )
+}`} />
         </div>
 
         <div>
@@ -125,6 +163,26 @@ function Chapter4() {
             onMouseMove, onMouseEnter, and onMouseLeave in action:
           </p>
           <MouseTracker />
+          <CodeBlock title="MouseTracker" code={`function MouseTracker() {
+  const [pos, setPos] = useState({ x: 0, y: 0 })
+  const [isInside, setIsInside] = useState(false)
+
+  return (
+    <div
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect()
+        setPos({
+          x: Math.round(e.clientX - rect.left),
+          y: Math.round(e.clientY - rect.top),
+        })
+      }}
+      onMouseEnter={() => setIsInside(true)}
+      onMouseLeave={() => setIsInside(false)}
+    >
+      {isInside ? <span>({pos.x}, {pos.y})</span> : <span>Move your mouse here</span>}
+    </div>
+  )
+}`} />
         </div>
       </div>
     </ChapterLayout>

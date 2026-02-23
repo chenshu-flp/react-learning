@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/5')({ component: Chapter5 })
+export const Route = createFileRoute('/chapters/conditional-rendering')({ component: Chapter5 })
 
 function TernaryDemo() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -141,7 +142,7 @@ function StatusDisplay({ status }: { status: 'loading' | 'error' | 'success' }) 
 
 function Chapter5() {
   return (
-    <ChapterLayout chapterNumber={5}>
+    <ChapterLayout slug="conditional-rendering">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">Ternary Operator</h3>
@@ -150,6 +151,20 @@ function Chapter5() {
             one of two branches:
           </p>
           <TernaryDemo />
+          <CodeBlock title="Ternary Operator" code={`const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+return (
+  <div>
+    <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
+      {isLoggedIn ? 'Log Out' : 'Log In'}
+    </button>
+    {isLoggedIn ? (
+      <p>Welcome back, User!</p>
+    ) : (
+      <p>Please log in to see your profile.</p>
+    )}
+  </div>
+)`} />
         </div>
 
         <div>
@@ -159,6 +174,13 @@ function Chapter5() {
             render something only when the condition is true:
           </p>
           <LogicalAndDemo />
+          <CodeBlock title="Logical && Operator" code={`{notifications > 0 && (
+  <div>You have {notifications} unread notifications</div>
+)}
+
+{showBanner && (
+  <div>This banner is conditionally rendered with &&</div>
+)}`} />
         </div>
 
         <div>
@@ -168,6 +190,17 @@ function Chapter5() {
             and success states:
           </p>
           <EarlyReturnDemo />
+          <CodeBlock title="Early Return Pattern" code={`function StatusDisplay({ status }: { status: 'loading' | 'error' | 'success' }) {
+  if (status === 'loading') {
+    return <div>Loading data...</div>
+  }
+
+  if (status === 'error') {
+    return <div>Something went wrong!</div>
+  }
+
+  return <div>Data loaded successfully!</div>
+}`} />
         </div>
       </div>
     </ChapterLayout>

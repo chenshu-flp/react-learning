@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/7')({ component: Chapter7 })
+export const Route = createFileRoute('/chapters/forms')({ component: Chapter7 })
 
 function ControlledForm() {
   const [name, setName] = useState('')
@@ -158,7 +159,7 @@ function MultipleInputs() {
 
 function Chapter7() {
   return (
-    <ChapterLayout chapterNumber={7}>
+    <ChapterLayout slug="forms">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">Controlled Form with Validation</h3>
@@ -167,6 +168,26 @@ function Chapter7() {
             until all validation rules pass:
           </p>
           <ControlledForm />
+          <CodeBlock title="Controlled Form" code={`const [name, setName] = useState('')
+const [email, setEmail] = useState('')
+const [agreed, setAgreed] = useState(false)
+
+const isValid = name.trim().length > 0 && email.includes('@') && agreed
+
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault()
+  // process form data...
+}
+
+<form onSubmit={handleSubmit}>
+  <input value={name} onChange={(e) => setName(e.target.value)} />
+  <input value={email} onChange={(e) => setEmail(e.target.value)} />
+  <label>
+    <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
+    I agree
+  </label>
+  <button type="submit" disabled={!isValid}>Submit</button>
+</form>`} />
         </div>
 
         <div>
@@ -176,6 +197,21 @@ function Chapter7() {
             multiple inputs with one state object:
           </p>
           <MultipleInputs />
+          <CodeBlock title="Shared Change Handler" code={`const [form, setForm] = useState({
+  firstName: '',
+  lastName: '',
+  bio: '',
+})
+
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  setForm({ ...form, [e.target.name]: e.target.value })
+}
+
+<input name="firstName" value={form.firstName} onChange={handleChange} />
+<input name="lastName" value={form.lastName} onChange={handleChange} />
+<textarea name="bio" value={form.bio} onChange={handleChange} />`} />
         </div>
       </div>
     </ChapterLayout>

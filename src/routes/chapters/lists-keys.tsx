@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import ChapterLayout from '#/components/ChapterLayout'
+import CodeBlock from '#/components/CodeBlock'
 
-export const Route = createFileRoute('/chapters/6')({ component: Chapter6 })
+export const Route = createFileRoute('/chapters/lists-keys')({ component: Chapter6 })
 
 let nextId = 4
 
@@ -158,7 +159,7 @@ function KeysDemo() {
 
 function Chapter6() {
   return (
-    <ChapterLayout chapterNumber={6}>
+    <ChapterLayout slug="lists-keys">
       <div className="space-y-8">
         <div>
           <h3 className="text-lg font-semibold mb-3">Rendering Lists</h3>
@@ -167,6 +168,19 @@ function Chapter6() {
             Try adding, removing, reordering, and toggling items:
           </p>
           <ListDemo />
+          <CodeBlock title="Rendering Lists" code={`const [items, setItems] = useState([
+  { id: 1, text: 'Learn React', done: false },
+  { id: 2, text: 'Build a project', done: false },
+])
+
+<ul>
+  {items.map((item) => (
+    <li key={item.id}>
+      <span>{item.text}</span>
+      <button onClick={() => removeItem(item.id)}>×</button>
+    </li>
+  ))}
+</ul>`} />
         </div>
 
         <div>
@@ -176,6 +190,19 @@ function Chapter6() {
             reconciliation behaves differently:
           </p>
           <KeysDemo />
+          <CodeBlock title="Index Keys vs Stable Keys" code={`// BAD: using index as key — causes bugs when list is reordered
+{items.map((item, index) => (
+  <li key={index}>
+    <input defaultValue="" />
+  </li>
+))}
+
+// GOOD: using a stable, unique identifier
+{items.map((item) => (
+  <li key={item.id}>
+    <input defaultValue="" />
+  </li>
+))}`} />
         </div>
       </div>
     </ChapterLayout>
