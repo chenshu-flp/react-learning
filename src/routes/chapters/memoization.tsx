@@ -117,50 +117,6 @@ function CallbackDemo() {
   )
 }
 
-function FilteredListDemo() {
-  const [search, setSearch] = useState('')
-  const [items] = useState(() =>
-    Array.from({ length: 5000 }, (_, i) => ({
-      id: i,
-      name: `Item ${i + 1} - ${['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon'][i % 5]}`,
-    })),
-  )
-
-  const filtered = useMemo(() => {
-    if (!search) return items.slice(0, 50)
-    return items
-      .filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase()),
-      )
-      .slice(0, 50)
-  }, [items, search])
-
-  return (
-    <div className="bg-gray-900 rounded-lg p-6 space-y-4">
-      <input
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search 5,000 items (shows first 50 matches)..."
-        className="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm"
-      />
-      <p className="text-sm text-gray-500">
-        Showing {filtered.length} of {items.length} items
-        {search && ` matching "${search}"`}
-      </p>
-      <div className="max-h-48 overflow-y-auto space-y-1">
-        {filtered.map((item) => (
-          <div
-            key={item.id}
-            className="bg-gray-800 rounded px-3 py-1.5 text-sm text-gray-300"
-          >
-            {item.name}
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
 function Chapter16() {
   return (
     <ChapterLayout slug="memoization">
@@ -230,31 +186,6 @@ function CallbackDemo() {
     </>
   )
 }`} />
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-3">useMemo: Filtered List</h3>
-          <p className="text-gray-300 mb-3">
-            Memoize a filtered/sorted list to avoid recalculating on unrelated
-            state changes:
-          </p>
-          <FilteredListDemo />
-          <CodeBlock title="Memoized Filtered List" code={`const [search, setSearch] = useState('')
-const [items] = useState(() =>
-  Array.from({ length: 5000 }, (_, i) => ({
-    id: i,
-    name: \`Item \${i + 1} - \${['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon'][i % 5]}\`,
-  }))
-)
-
-const filtered = useMemo(() => {
-  if (!search) return items.slice(0, 50)
-  return items
-    .filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase()),
-    )
-    .slice(0, 50)
-}, [items, search])`} />
         </div>
       </div>
     </ChapterLayout>

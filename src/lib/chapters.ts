@@ -118,13 +118,6 @@ export const chapters: Chapter[] = [
     slug: 'memoization',
     category: 'Intermediate',
   },
-  {
-    title: 'Error Boundaries',
-    description:
-      "Catch and handle errors gracefully so a single component failure doesn't crash the whole app.",
-    slug: 'error-boundaries',
-    category: 'Intermediate',
-  },
 ]
 
 export function chapterPath(slug: string) {
