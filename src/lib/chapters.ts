@@ -56,13 +56,6 @@ export const chapters: Chapter[] = [
     category: 'Core Basics',
   },
   {
-    title: 'Effects (useEffect)',
-    description:
-      'Synchronize your components with external systems using effects, and learn about cleanup.',
-    slug: 'use-effect',
-    category: 'Core Basics',
-  },
-  {
     title: 'Reacting to Input with State',
     description:
       'Think about UI changes as state changes. Model your components as state machines with declarative transitions.',
@@ -82,6 +75,13 @@ export const chapters: Chapter[] = [
       'Lift state up to a common parent so sibling components can share and stay in sync.',
     slug: 'sharing-state',
     category: 'Managing State',
+  },
+  {
+    title: 'Effects (useEffect)',
+    description:
+      'Synchronize your components with external systems using effects, and learn about cleanup.',
+    slug: 'use-effect',
+    category: 'Intermediate',
   },
   {
     title: 'Refs (useRef)',
