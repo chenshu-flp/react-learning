@@ -2,7 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { Home } from 'lucide-react'
 import { chapters, chapterPath } from '#/lib/chapters'
 
-const categories = ['Core Basics', 'Managing State', 'Intermediate'] as const
+const categories = ['Core Basics', 'Intermediate'] as const
 
 export default function Sidebar() {
   return (

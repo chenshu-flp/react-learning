@@ -52,13 +52,6 @@ function Home() {
           <ChapterGrid category="Core Basics" />
         </section>
 
-        <section className="mb-12">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-cyan-400 mb-6">
-            Managing State
-          </h2>
-          <ChapterGrid category="Managing State" />
-        </section>
-
         <section>
           <h2 className="text-sm font-semibold uppercase tracking-wider text-cyan-400 mb-6">
             Intermediate

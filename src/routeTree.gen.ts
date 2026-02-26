@@ -14,9 +14,6 @@ import { Route as ChaptersUseStateRouteImport } from './routes/chapters/use-stat
 import { Route as ChaptersUseRefRouteImport } from './routes/chapters/use-ref'
 import { Route as ChaptersUseReducerRouteImport } from './routes/chapters/use-reducer'
 import { Route as ChaptersUseEffectRouteImport } from './routes/chapters/use-effect'
-import { Route as ChaptersStateStructureRouteImport } from './routes/chapters/state-structure'
-import { Route as ChaptersSharingStateRouteImport } from './routes/chapters/sharing-state'
-import { Route as ChaptersReactiveInputRouteImport } from './routes/chapters/reactive-input'
 import { Route as ChaptersReactRenderingRouteImport } from './routes/chapters/react-rendering'
 import { Route as ChaptersMoveStateDownRouteImport } from './routes/chapters/move-state-down'
 import { Route as ChaptersMemoizationRouteImport } from './routes/chapters/memoization'
@@ -54,21 +51,6 @@ const ChaptersUseReducerRoute = ChaptersUseReducerRouteImport.update({
 const ChaptersUseEffectRoute = ChaptersUseEffectRouteImport.update({
   id: '/chapters/use-effect',
   path: '/chapters/use-effect',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChaptersStateStructureRoute = ChaptersStateStructureRouteImport.update({
-  id: '/chapters/state-structure',
-  path: '/chapters/state-structure',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChaptersSharingStateRoute = ChaptersSharingStateRouteImport.update({
-  id: '/chapters/sharing-state',
-  path: '/chapters/sharing-state',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChaptersReactiveInputRoute = ChaptersReactiveInputRouteImport.update({
-  id: '/chapters/reactive-input',
-  path: '/chapters/reactive-input',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChaptersReactRenderingRoute = ChaptersReactRenderingRouteImport.update({
@@ -153,9 +135,6 @@ export interface FileRoutesByFullPath {
   '/chapters/memoization': typeof ChaptersMemoizationRoute
   '/chapters/move-state-down': typeof ChaptersMoveStateDownRoute
   '/chapters/react-rendering': typeof ChaptersReactRenderingRoute
-  '/chapters/reactive-input': typeof ChaptersReactiveInputRoute
-  '/chapters/sharing-state': typeof ChaptersSharingStateRoute
-  '/chapters/state-structure': typeof ChaptersStateStructureRoute
   '/chapters/use-effect': typeof ChaptersUseEffectRoute
   '/chapters/use-reducer': typeof ChaptersUseReducerRoute
   '/chapters/use-ref': typeof ChaptersUseRefRoute
@@ -176,9 +155,6 @@ export interface FileRoutesByTo {
   '/chapters/memoization': typeof ChaptersMemoizationRoute
   '/chapters/move-state-down': typeof ChaptersMoveStateDownRoute
   '/chapters/react-rendering': typeof ChaptersReactRenderingRoute
-  '/chapters/reactive-input': typeof ChaptersReactiveInputRoute
-  '/chapters/sharing-state': typeof ChaptersSharingStateRoute
-  '/chapters/state-structure': typeof ChaptersStateStructureRoute
   '/chapters/use-effect': typeof ChaptersUseEffectRoute
   '/chapters/use-reducer': typeof ChaptersUseReducerRoute
   '/chapters/use-ref': typeof ChaptersUseRefRoute
@@ -200,9 +176,6 @@ export interface FileRoutesById {
   '/chapters/memoization': typeof ChaptersMemoizationRoute
   '/chapters/move-state-down': typeof ChaptersMoveStateDownRoute
   '/chapters/react-rendering': typeof ChaptersReactRenderingRoute
-  '/chapters/reactive-input': typeof ChaptersReactiveInputRoute
-  '/chapters/sharing-state': typeof ChaptersSharingStateRoute
-  '/chapters/state-structure': typeof ChaptersStateStructureRoute
   '/chapters/use-effect': typeof ChaptersUseEffectRoute
   '/chapters/use-reducer': typeof ChaptersUseReducerRoute
   '/chapters/use-ref': typeof ChaptersUseRefRoute
@@ -225,9 +198,6 @@ export interface FileRouteTypes {
     | '/chapters/memoization'
     | '/chapters/move-state-down'
     | '/chapters/react-rendering'
-    | '/chapters/reactive-input'
-    | '/chapters/sharing-state'
-    | '/chapters/state-structure'
     | '/chapters/use-effect'
     | '/chapters/use-reducer'
     | '/chapters/use-ref'
@@ -248,9 +218,6 @@ export interface FileRouteTypes {
     | '/chapters/memoization'
     | '/chapters/move-state-down'
     | '/chapters/react-rendering'
-    | '/chapters/reactive-input'
-    | '/chapters/sharing-state'
-    | '/chapters/state-structure'
     | '/chapters/use-effect'
     | '/chapters/use-reducer'
     | '/chapters/use-ref'
@@ -271,9 +238,6 @@ export interface FileRouteTypes {
     | '/chapters/memoization'
     | '/chapters/move-state-down'
     | '/chapters/react-rendering'
-    | '/chapters/reactive-input'
-    | '/chapters/sharing-state'
-    | '/chapters/state-structure'
     | '/chapters/use-effect'
     | '/chapters/use-reducer'
     | '/chapters/use-ref'
@@ -295,9 +259,6 @@ export interface RootRouteChildren {
   ChaptersMemoizationRoute: typeof ChaptersMemoizationRoute
   ChaptersMoveStateDownRoute: typeof ChaptersMoveStateDownRoute
   ChaptersReactRenderingRoute: typeof ChaptersReactRenderingRoute
-  ChaptersReactiveInputRoute: typeof ChaptersReactiveInputRoute
-  ChaptersSharingStateRoute: typeof ChaptersSharingStateRoute
-  ChaptersStateStructureRoute: typeof ChaptersStateStructureRoute
   ChaptersUseEffectRoute: typeof ChaptersUseEffectRoute
   ChaptersUseReducerRoute: typeof ChaptersUseReducerRoute
   ChaptersUseRefRoute: typeof ChaptersUseRefRoute
@@ -339,27 +300,6 @@ declare module '@tanstack/react-router' {
       path: '/chapters/use-effect'
       fullPath: '/chapters/use-effect'
       preLoaderRoute: typeof ChaptersUseEffectRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chapters/state-structure': {
-      id: '/chapters/state-structure'
-      path: '/chapters/state-structure'
-      fullPath: '/chapters/state-structure'
-      preLoaderRoute: typeof ChaptersStateStructureRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chapters/sharing-state': {
-      id: '/chapters/sharing-state'
-      path: '/chapters/sharing-state'
-      fullPath: '/chapters/sharing-state'
-      preLoaderRoute: typeof ChaptersSharingStateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chapters/reactive-input': {
-      id: '/chapters/reactive-input'
-      path: '/chapters/reactive-input'
-      fullPath: '/chapters/reactive-input'
-      preLoaderRoute: typeof ChaptersReactiveInputRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chapters/react-rendering': {
@@ -471,9 +411,6 @@ const rootRouteChildren: RootRouteChildren = {
   ChaptersMemoizationRoute: ChaptersMemoizationRoute,
   ChaptersMoveStateDownRoute: ChaptersMoveStateDownRoute,
   ChaptersReactRenderingRoute: ChaptersReactRenderingRoute,
-  ChaptersReactiveInputRoute: ChaptersReactiveInputRoute,
-  ChaptersSharingStateRoute: ChaptersSharingStateRoute,
-  ChaptersStateStructureRoute: ChaptersStateStructureRoute,
   ChaptersUseEffectRoute: ChaptersUseEffectRoute,
   ChaptersUseReducerRoute: ChaptersUseReducerRoute,
   ChaptersUseRefRoute: ChaptersUseRefRoute,

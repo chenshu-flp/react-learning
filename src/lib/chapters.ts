@@ -2,7 +2,7 @@ export interface Chapter {
   title: string
   description: string
   slug: string
-  category: 'Core Basics' | 'Managing State' | 'Intermediate'
+  category: 'Core Basics' | 'Intermediate'
 }
 
 export const chapters: Chapter[] = [
@@ -54,27 +54,6 @@ export const chapters: Chapter[] = [
       'Handle user input with controlled components, form submission, and basic validation.',
     slug: 'forms',
     category: 'Core Basics',
-  },
-  {
-    title: 'Reacting to Input with State',
-    description:
-      'Think about UI changes as state changes. Model your components as state machines with declarative transitions.',
-    slug: 'reactive-input',
-    category: 'Managing State',
-  },
-  {
-    title: 'Choosing the State Structure',
-    description:
-      'Structure your state to avoid redundancy and contradictions. Derive values instead of syncing them.',
-    slug: 'state-structure',
-    category: 'Managing State',
-  },
-  {
-    title: 'Sharing State Between Components',
-    description:
-      'Lift state up to a common parent so sibling components can share and stay in sync.',
-    slug: 'sharing-state',
-    category: 'Managing State',
   },
   {
     title: 'Effects (useEffect)',
