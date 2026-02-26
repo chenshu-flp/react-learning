@@ -22,6 +22,7 @@ import { Route as ChaptersLiftContentUpRouteImport } from './routes/chapters/lif
 import { Route as ChaptersJsxRouteImport } from './routes/chapters/jsx'
 import { Route as ChaptersFormsRouteImport } from './routes/chapters/forms'
 import { Route as ChaptersEventsRouteImport } from './routes/chapters/events'
+import { Route as ChaptersDontCallFunctionComponentsRouteImport } from './routes/chapters/dont-call-function-components'
 import { Route as ChaptersCustomHooksRouteImport } from './routes/chapters/custom-hooks'
 import { Route as ChaptersContextRouteImport } from './routes/chapters/context'
 import { Route as ChaptersConditionalRenderingRouteImport } from './routes/chapters/conditional-rendering'
@@ -92,6 +93,12 @@ const ChaptersEventsRoute = ChaptersEventsRouteImport.update({
   path: '/chapters/events',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChaptersDontCallFunctionComponentsRoute =
+  ChaptersDontCallFunctionComponentsRouteImport.update({
+    id: '/chapters/dont-call-function-components',
+    path: '/chapters/dont-call-function-components',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ChaptersCustomHooksRoute = ChaptersCustomHooksRouteImport.update({
   id: '/chapters/custom-hooks',
   path: '/chapters/custom-hooks',
@@ -120,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/chapters/conditional-rendering': typeof ChaptersConditionalRenderingRoute
   '/chapters/context': typeof ChaptersContextRoute
   '/chapters/custom-hooks': typeof ChaptersCustomHooksRoute
+  '/chapters/dont-call-function-components': typeof ChaptersDontCallFunctionComponentsRoute
   '/chapters/events': typeof ChaptersEventsRoute
   '/chapters/forms': typeof ChaptersFormsRoute
   '/chapters/jsx': typeof ChaptersJsxRoute
@@ -139,6 +147,7 @@ export interface FileRoutesByTo {
   '/chapters/conditional-rendering': typeof ChaptersConditionalRenderingRoute
   '/chapters/context': typeof ChaptersContextRoute
   '/chapters/custom-hooks': typeof ChaptersCustomHooksRoute
+  '/chapters/dont-call-function-components': typeof ChaptersDontCallFunctionComponentsRoute
   '/chapters/events': typeof ChaptersEventsRoute
   '/chapters/forms': typeof ChaptersFormsRoute
   '/chapters/jsx': typeof ChaptersJsxRoute
@@ -159,6 +168,7 @@ export interface FileRoutesById {
   '/chapters/conditional-rendering': typeof ChaptersConditionalRenderingRoute
   '/chapters/context': typeof ChaptersContextRoute
   '/chapters/custom-hooks': typeof ChaptersCustomHooksRoute
+  '/chapters/dont-call-function-components': typeof ChaptersDontCallFunctionComponentsRoute
   '/chapters/events': typeof ChaptersEventsRoute
   '/chapters/forms': typeof ChaptersFormsRoute
   '/chapters/jsx': typeof ChaptersJsxRoute
@@ -180,6 +190,7 @@ export interface FileRouteTypes {
     | '/chapters/conditional-rendering'
     | '/chapters/context'
     | '/chapters/custom-hooks'
+    | '/chapters/dont-call-function-components'
     | '/chapters/events'
     | '/chapters/forms'
     | '/chapters/jsx'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/chapters/conditional-rendering'
     | '/chapters/context'
     | '/chapters/custom-hooks'
+    | '/chapters/dont-call-function-components'
     | '/chapters/events'
     | '/chapters/forms'
     | '/chapters/jsx'
@@ -218,6 +230,7 @@ export interface FileRouteTypes {
     | '/chapters/conditional-rendering'
     | '/chapters/context'
     | '/chapters/custom-hooks'
+    | '/chapters/dont-call-function-components'
     | '/chapters/events'
     | '/chapters/forms'
     | '/chapters/jsx'
@@ -238,6 +251,7 @@ export interface RootRouteChildren {
   ChaptersConditionalRenderingRoute: typeof ChaptersConditionalRenderingRoute
   ChaptersContextRoute: typeof ChaptersContextRoute
   ChaptersCustomHooksRoute: typeof ChaptersCustomHooksRoute
+  ChaptersDontCallFunctionComponentsRoute: typeof ChaptersDontCallFunctionComponentsRoute
   ChaptersEventsRoute: typeof ChaptersEventsRoute
   ChaptersFormsRoute: typeof ChaptersFormsRoute
   ChaptersJsxRoute: typeof ChaptersJsxRoute
@@ -345,6 +359,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChaptersEventsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chapters/dont-call-function-components': {
+      id: '/chapters/dont-call-function-components'
+      path: '/chapters/dont-call-function-components'
+      fullPath: '/chapters/dont-call-function-components'
+      preLoaderRoute: typeof ChaptersDontCallFunctionComponentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/chapters/custom-hooks': {
       id: '/chapters/custom-hooks'
       path: '/chapters/custom-hooks'
@@ -382,6 +403,8 @@ const rootRouteChildren: RootRouteChildren = {
   ChaptersConditionalRenderingRoute: ChaptersConditionalRenderingRoute,
   ChaptersContextRoute: ChaptersContextRoute,
   ChaptersCustomHooksRoute: ChaptersCustomHooksRoute,
+  ChaptersDontCallFunctionComponentsRoute:
+    ChaptersDontCallFunctionComponentsRoute,
   ChaptersEventsRoute: ChaptersEventsRoute,
   ChaptersFormsRoute: ChaptersFormsRoute,
   ChaptersJsxRoute: ChaptersJsxRoute,
