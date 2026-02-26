@@ -172,17 +172,20 @@ function Chapter16() {
             recomputes when dependencies change:
           </p>
           <ExpensiveComputationDemo />
-          <CodeBlock title="useMemo" code={`const [count, setCount] = useState(30)
-const [color, setColor] = useState('cyan')
+          <CodeBlock title="useMemo" code={`const [number, setNumber] = useState(30)
+const [dark, setDark] = useState(false)
 
-// Only recomputes when count changes, not when color changes
-const fibonacci = useMemo(() => {
-  function fib(n: number): number {
+// Only recomputes when number changes, not when dark changes
+const fib = useMemo(() => {
+  const compute = (n: number): number => {
     if (n <= 1) return n
-    return fib(n - 1) + fib(n - 2)
+    return compute(n - 1) + compute(n - 2)
   }
-  return fib(count)
-}, [count])`} />
+  const start = performance.now()
+  const result = compute(number)
+  const duration = performance.now() - start
+  return { result, duration: duration.toFixed(2) }
+}, [number])`} />
         </div>
 
         <div>
@@ -199,20 +202,33 @@ const fibonacci = useMemo(() => {
   onClick: () => void
   label: string
 }) {
-  console.log(\`\${label} rendered\`)  // won't re-log if onClick is stable
-  return <button onClick={onClick}>{label}</button>
+  const renderTime = new Date().toLocaleTimeString()
+  return (
+    <div>
+      <button onClick={onClick}>{label}</button>
+      <span>rendered at {renderTime}</span>
+    </div>
+  )
 })
 
-function Parent() {
-  const [count, setCount] = useState(0)
+function CallbackDemo() {
+  const [countA, setCountA] = useState(0)
+  const [countB, setCountB] = useState(0)
+  const [other, setOther] = useState(0)
 
-  // Without useCallback: new function every render → child re-renders
-  // With useCallback: same function reference → child skips re-render
-  const handleClick = useCallback(() => {
-    setCount((c) => c + 1)
-  }, [])
+  // Stable references — memo'd children won't re-render
+  const incrementA = useCallback(() => setCountA((c) => c + 1), [])
+  const incrementB = useCallback(() => setCountB((c) => c + 1), [])
 
-  return <ChildButton onClick={handleClick} label="Increment" />
+  return (
+    <>
+      <ChildButton onClick={incrementA} label={\`A: \${countA}\`} />
+      <ChildButton onClick={incrementB} label={\`B: \${countB}\`} />
+      <button onClick={() => setOther((o) => o + 1)}>
+        Re-render parent (other: {other})
+      </button>
+    </>
+  )
 }`} />
         </div>
 
@@ -225,14 +241,18 @@ function Parent() {
           <FilteredListDemo />
           <CodeBlock title="Memoized Filtered List" code={`const [search, setSearch] = useState('')
 const [items] = useState(() =>
-  Array.from({ length: 5000 }, (_, i) => ({ id: i, name: \`Item \${i}\` }))
+  Array.from({ length: 5000 }, (_, i) => ({
+    id: i,
+    name: \`Item \${i + 1} - \${['Alpha', 'Beta', 'Gamma', 'Delta', 'Epsilon'][i % 5]}\`,
+  }))
 )
 
-// Only recomputes when items or search changes
 const filtered = useMemo(() => {
   if (!search) return items.slice(0, 50)
   return items
-    .filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
+    .filter((item) =>
+      item.name.toLowerCase().includes(search.toLowerCase()),
+    )
     .slice(0, 50)
 }, [items, search])`} />
         </div>
