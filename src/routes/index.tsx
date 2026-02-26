@@ -36,7 +36,7 @@ function ChapterGrid({ category }: { category: string }) {
 function Home() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <div className="max-w-5xl mx-auto px-6 py-12">
+      <div className="max-w-6xl mx-auto px-10 py-12">
         <header className="text-center mb-14">
           <h1 className="text-5xl font-bold mb-4">React Workshop</h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">

@@ -20,7 +20,7 @@ export default function ChapterLayout({
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <div className="max-w-4xl mx-auto px-6 py-10">
+      <div className="max-w-6xl mx-auto px-10 py-10">
         <div className="mb-8">
           <Link
             to="/"

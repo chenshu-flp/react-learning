@@ -17,8 +17,11 @@ import { Route as ChaptersUseEffectRouteImport } from './routes/chapters/use-eff
 import { Route as ChaptersStateStructureRouteImport } from './routes/chapters/state-structure'
 import { Route as ChaptersSharingStateRouteImport } from './routes/chapters/sharing-state'
 import { Route as ChaptersReactiveInputRouteImport } from './routes/chapters/reactive-input'
+import { Route as ChaptersReactRenderingRouteImport } from './routes/chapters/react-rendering'
+import { Route as ChaptersMoveStateDownRouteImport } from './routes/chapters/move-state-down'
 import { Route as ChaptersMemoizationRouteImport } from './routes/chapters/memoization'
 import { Route as ChaptersListsKeysRouteImport } from './routes/chapters/lists-keys'
+import { Route as ChaptersLiftContentUpRouteImport } from './routes/chapters/lift-content-up'
 import { Route as ChaptersJsxRouteImport } from './routes/chapters/jsx'
 import { Route as ChaptersFormsRouteImport } from './routes/chapters/forms'
 import { Route as ChaptersEventsRouteImport } from './routes/chapters/events'
@@ -68,6 +71,16 @@ const ChaptersReactiveInputRoute = ChaptersReactiveInputRouteImport.update({
   path: '/chapters/reactive-input',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChaptersReactRenderingRoute = ChaptersReactRenderingRouteImport.update({
+  id: '/chapters/react-rendering',
+  path: '/chapters/react-rendering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChaptersMoveStateDownRoute = ChaptersMoveStateDownRouteImport.update({
+  id: '/chapters/move-state-down',
+  path: '/chapters/move-state-down',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ChaptersMemoizationRoute = ChaptersMemoizationRouteImport.update({
   id: '/chapters/memoization',
   path: '/chapters/memoization',
@@ -76,6 +89,11 @@ const ChaptersMemoizationRoute = ChaptersMemoizationRouteImport.update({
 const ChaptersListsKeysRoute = ChaptersListsKeysRouteImport.update({
   id: '/chapters/lists-keys',
   path: '/chapters/lists-keys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChaptersLiftContentUpRoute = ChaptersLiftContentUpRouteImport.update({
+  id: '/chapters/lift-content-up',
+  path: '/chapters/lift-content-up',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChaptersJsxRoute = ChaptersJsxRouteImport.update({
@@ -130,8 +148,11 @@ export interface FileRoutesByFullPath {
   '/chapters/events': typeof ChaptersEventsRoute
   '/chapters/forms': typeof ChaptersFormsRoute
   '/chapters/jsx': typeof ChaptersJsxRoute
+  '/chapters/lift-content-up': typeof ChaptersLiftContentUpRoute
   '/chapters/lists-keys': typeof ChaptersListsKeysRoute
   '/chapters/memoization': typeof ChaptersMemoizationRoute
+  '/chapters/move-state-down': typeof ChaptersMoveStateDownRoute
+  '/chapters/react-rendering': typeof ChaptersReactRenderingRoute
   '/chapters/reactive-input': typeof ChaptersReactiveInputRoute
   '/chapters/sharing-state': typeof ChaptersSharingStateRoute
   '/chapters/state-structure': typeof ChaptersStateStructureRoute
@@ -150,8 +171,11 @@ export interface FileRoutesByTo {
   '/chapters/events': typeof ChaptersEventsRoute
   '/chapters/forms': typeof ChaptersFormsRoute
   '/chapters/jsx': typeof ChaptersJsxRoute
+  '/chapters/lift-content-up': typeof ChaptersLiftContentUpRoute
   '/chapters/lists-keys': typeof ChaptersListsKeysRoute
   '/chapters/memoization': typeof ChaptersMemoizationRoute
+  '/chapters/move-state-down': typeof ChaptersMoveStateDownRoute
+  '/chapters/react-rendering': typeof ChaptersReactRenderingRoute
   '/chapters/reactive-input': typeof ChaptersReactiveInputRoute
   '/chapters/sharing-state': typeof ChaptersSharingStateRoute
   '/chapters/state-structure': typeof ChaptersStateStructureRoute
@@ -171,8 +195,11 @@ export interface FileRoutesById {
   '/chapters/events': typeof ChaptersEventsRoute
   '/chapters/forms': typeof ChaptersFormsRoute
   '/chapters/jsx': typeof ChaptersJsxRoute
+  '/chapters/lift-content-up': typeof ChaptersLiftContentUpRoute
   '/chapters/lists-keys': typeof ChaptersListsKeysRoute
   '/chapters/memoization': typeof ChaptersMemoizationRoute
+  '/chapters/move-state-down': typeof ChaptersMoveStateDownRoute
+  '/chapters/react-rendering': typeof ChaptersReactRenderingRoute
   '/chapters/reactive-input': typeof ChaptersReactiveInputRoute
   '/chapters/sharing-state': typeof ChaptersSharingStateRoute
   '/chapters/state-structure': typeof ChaptersStateStructureRoute
@@ -193,8 +220,11 @@ export interface FileRouteTypes {
     | '/chapters/events'
     | '/chapters/forms'
     | '/chapters/jsx'
+    | '/chapters/lift-content-up'
     | '/chapters/lists-keys'
     | '/chapters/memoization'
+    | '/chapters/move-state-down'
+    | '/chapters/react-rendering'
     | '/chapters/reactive-input'
     | '/chapters/sharing-state'
     | '/chapters/state-structure'
@@ -213,8 +243,11 @@ export interface FileRouteTypes {
     | '/chapters/events'
     | '/chapters/forms'
     | '/chapters/jsx'
+    | '/chapters/lift-content-up'
     | '/chapters/lists-keys'
     | '/chapters/memoization'
+    | '/chapters/move-state-down'
+    | '/chapters/react-rendering'
     | '/chapters/reactive-input'
     | '/chapters/sharing-state'
     | '/chapters/state-structure'
@@ -233,8 +266,11 @@ export interface FileRouteTypes {
     | '/chapters/events'
     | '/chapters/forms'
     | '/chapters/jsx'
+    | '/chapters/lift-content-up'
     | '/chapters/lists-keys'
     | '/chapters/memoization'
+    | '/chapters/move-state-down'
+    | '/chapters/react-rendering'
     | '/chapters/reactive-input'
     | '/chapters/sharing-state'
     | '/chapters/state-structure'
@@ -254,8 +290,11 @@ export interface RootRouteChildren {
   ChaptersEventsRoute: typeof ChaptersEventsRoute
   ChaptersFormsRoute: typeof ChaptersFormsRoute
   ChaptersJsxRoute: typeof ChaptersJsxRoute
+  ChaptersLiftContentUpRoute: typeof ChaptersLiftContentUpRoute
   ChaptersListsKeysRoute: typeof ChaptersListsKeysRoute
   ChaptersMemoizationRoute: typeof ChaptersMemoizationRoute
+  ChaptersMoveStateDownRoute: typeof ChaptersMoveStateDownRoute
+  ChaptersReactRenderingRoute: typeof ChaptersReactRenderingRoute
   ChaptersReactiveInputRoute: typeof ChaptersReactiveInputRoute
   ChaptersSharingStateRoute: typeof ChaptersSharingStateRoute
   ChaptersStateStructureRoute: typeof ChaptersStateStructureRoute
@@ -323,6 +362,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChaptersReactiveInputRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chapters/react-rendering': {
+      id: '/chapters/react-rendering'
+      path: '/chapters/react-rendering'
+      fullPath: '/chapters/react-rendering'
+      preLoaderRoute: typeof ChaptersReactRenderingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chapters/move-state-down': {
+      id: '/chapters/move-state-down'
+      path: '/chapters/move-state-down'
+      fullPath: '/chapters/move-state-down'
+      preLoaderRoute: typeof ChaptersMoveStateDownRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/chapters/memoization': {
       id: '/chapters/memoization'
       path: '/chapters/memoization'
@@ -335,6 +388,13 @@ declare module '@tanstack/react-router' {
       path: '/chapters/lists-keys'
       fullPath: '/chapters/lists-keys'
       preLoaderRoute: typeof ChaptersListsKeysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chapters/lift-content-up': {
+      id: '/chapters/lift-content-up'
+      path: '/chapters/lift-content-up'
+      fullPath: '/chapters/lift-content-up'
+      preLoaderRoute: typeof ChaptersLiftContentUpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chapters/jsx': {
@@ -406,8 +466,11 @@ const rootRouteChildren: RootRouteChildren = {
   ChaptersEventsRoute: ChaptersEventsRoute,
   ChaptersFormsRoute: ChaptersFormsRoute,
   ChaptersJsxRoute: ChaptersJsxRoute,
+  ChaptersLiftContentUpRoute: ChaptersLiftContentUpRoute,
   ChaptersListsKeysRoute: ChaptersListsKeysRoute,
   ChaptersMemoizationRoute: ChaptersMemoizationRoute,
+  ChaptersMoveStateDownRoute: ChaptersMoveStateDownRoute,
+  ChaptersReactRenderingRoute: ChaptersReactRenderingRoute,
   ChaptersReactiveInputRoute: ChaptersReactiveInputRoute,
   ChaptersSharingStateRoute: ChaptersSharingStateRoute,
   ChaptersStateStructureRoute: ChaptersStateStructureRoute,

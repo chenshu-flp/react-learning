@@ -112,6 +112,27 @@ export const chapters: Chapter[] = [
     category: 'Intermediate',
   },
   {
+    title: 'React Rendering',
+    description:
+      'Understand when and why React re-renders components, and how element identity determines whether a subtree is skipped.',
+    slug: 'react-rendering',
+    category: 'Intermediate',
+  },
+  {
+    title: 'Move State Down',
+    description:
+      'Improve performance by moving state into the component that actually uses it, so expensive siblings avoid unnecessary re-renders.',
+    slug: 'move-state-down',
+    category: 'Intermediate',
+  },
+  {
+    title: 'Lift Content Up',
+    description:
+      "Use the children prop to keep expensive subtrees from re-rendering when a parent's state changes.",
+    slug: 'lift-content-up',
+    category: 'Intermediate',
+  },
+  {
     title: 'useMemo & useCallback',
     description:
       'Optimize performance by memoizing expensive computations and stabilizing callback references.',
