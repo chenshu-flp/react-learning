@@ -86,6 +86,50 @@ function LogicalAndDemo() {
   )
 }
 
+function FalsyGotchaDemo() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div className="bg-gray-900 rounded-lg p-6 space-y-4">
+      <div className="flex items-center gap-3">
+        <button
+          onClick={() => setCount((c) => Math.max(0, c - 1))}
+          className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm font-medium"
+        >
+          -
+        </button>
+        <span className="text-lg font-mono w-8 text-center">{count}</span>
+        <button
+          onClick={() => setCount((c) => c + 1)}
+          className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors text-sm font-medium"
+        >
+          +
+        </button>
+      </div>
+      <div className="space-y-2">
+        <div className="bg-gray-800 rounded-lg p-4">
+          <p className="text-sm text-gray-400 mb-1">
+            <code className="text-red-400">count && &lt;span&gt;...&lt;/span&gt;</code>{' '}
+            <span className="text-red-400">(buggy)</span>
+          </p>
+          <div className="text-white font-mono">
+            Result: &quot;{count && <span>{count} notifications</span>}&quot;
+          </div>
+        </div>
+        <div className="bg-gray-800 rounded-lg p-4">
+          <p className="text-sm text-gray-400 mb-1">
+            <code className="text-green-400">count &gt; 0 && &lt;span&gt;...&lt;/span&gt;</code>{' '}
+            <span className="text-green-400">(fixed)</span>
+          </p>
+          <div className="text-white font-mono">
+            Result: &quot;{count > 0 && <span>{count} notifications</span>}&quot;
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function EarlyReturnDemo() {
   const [status, setStatus] = useState<'loading' | 'error' | 'success'>('loading')
 
@@ -181,6 +225,28 @@ return (
 {showBanner && (
   <div>This banner is conditionally rendered with &&</div>
 )}`} />
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-3">Caveat: && with Falsy Values</h3>
+          <p className="text-gray-300 mb-3">
+            Be careful when the left side of <code className="text-cyan-400">&&</code> is a{' '}
+            <strong>number</strong>. If it's <code className="text-cyan-400">0</code>, React will
+            render the text &quot;0&quot; instead of rendering nothing. This is because{' '}
+            <code className="text-cyan-400">0 && &lt;Foo /&gt;</code> evaluates to{' '}
+            <code className="text-cyan-400">0</code>, and React renders numbers.
+            Fix it by using a comparison that produces a boolean.
+          </p>
+          <FalsyGotchaDemo />
+          <CodeBlock title="&& Gotcha with 0" code={`// BUG: renders "0" when count is 0
+{count && <span>{count} notifications</span>}
+
+// FIX: use a comparison so the left side is a boolean
+{count > 0 && <span>{count} notifications</span>}
+
+// Also works: double negation or Boolean()
+{!!count && <span>{count} notifications</span>}
+{Boolean(count) && <span>{count} notifications</span>}`} />
         </div>
 
         <div>

@@ -59,6 +59,36 @@ function Chapter3() {
   return (
     <ChapterLayout slug="use-state">
       <div className="space-y-8">
+        <div className="bg-gray-900 rounded-lg p-6">
+          <h3 className="text-lg font-semibold mb-3">Why not just use a variable?</h3>
+          <p className="text-gray-300 mb-3">
+            You might wonder: why can't we just declare a <code className="text-cyan-400">let count = 0</code> variable
+            and update it directly? Two things prevent that from working:
+          </p>
+          <ol className="list-decimal list-inside text-gray-300 space-y-2 mb-4">
+            <li>
+              <strong className="text-white">Local variables don't persist between renders.</strong>{' '}
+              Every time React renders a component it calls the function from scratch, so any local variable is reset.
+            </li>
+            <li>
+              <strong className="text-white">Changing a local variable doesn't trigger a re-render.</strong>{' '}
+              React has no way to know something changed, so it never updates the screen.
+            </li>
+          </ol>
+          <p className="text-gray-300 mb-4">
+            This is the problem <strong className="text-white">Hooks</strong> solve. Hooks are special functions
+            (always starting with <code className="text-cyan-400">use</code>) that let you "hook into" React features
+            like state and lifecycle from inside function components.{' '}
+            <code className="text-cyan-400">useState</code> is the most fundamental hook — it gives you a value
+            that persists across renders and a setter function that tells React to re-render the component
+            with the new value.
+          </p>
+          <CodeBlock title="useState returns [value, setter]" code={`const [count, setCount] = useState(0)
+//      ^          ^                  ^
+//  current    function to       initial
+//   value     update it          value`} />
+        </div>
+
         <div>
           <h3 className="text-lg font-semibold mb-3">Counter</h3>
           <p className="text-gray-300 mb-3">
