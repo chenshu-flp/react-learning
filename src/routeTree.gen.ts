@@ -27,6 +27,7 @@ import { Route as ChaptersCustomHooksRouteImport } from './routes/chapters/custo
 import { Route as ChaptersContextRouteImport } from './routes/chapters/context'
 import { Route as ChaptersConditionalRenderingRouteImport } from './routes/chapters/conditional-rendering'
 import { Route as ChaptersComponentsPropsRouteImport } from './routes/chapters/components-props'
+import { Route as ChaptersComponentDesignRouteImport } from './routes/chapters/component-design'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -120,9 +121,15 @@ const ChaptersComponentsPropsRoute = ChaptersComponentsPropsRouteImport.update({
   path: '/chapters/components-props',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChaptersComponentDesignRoute = ChaptersComponentDesignRouteImport.update({
+  id: '/chapters/component-design',
+  path: '/chapters/component-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/chapters/component-design': typeof ChaptersComponentDesignRoute
   '/chapters/components-props': typeof ChaptersComponentsPropsRoute
   '/chapters/conditional-rendering': typeof ChaptersConditionalRenderingRoute
   '/chapters/context': typeof ChaptersContextRoute
@@ -143,6 +150,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/chapters/component-design': typeof ChaptersComponentDesignRoute
   '/chapters/components-props': typeof ChaptersComponentsPropsRoute
   '/chapters/conditional-rendering': typeof ChaptersConditionalRenderingRoute
   '/chapters/context': typeof ChaptersContextRoute
@@ -164,6 +172,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/chapters/component-design': typeof ChaptersComponentDesignRoute
   '/chapters/components-props': typeof ChaptersComponentsPropsRoute
   '/chapters/conditional-rendering': typeof ChaptersConditionalRenderingRoute
   '/chapters/context': typeof ChaptersContextRoute
@@ -186,6 +195,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/chapters/component-design'
     | '/chapters/components-props'
     | '/chapters/conditional-rendering'
     | '/chapters/context'
@@ -206,6 +216,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/chapters/component-design'
     | '/chapters/components-props'
     | '/chapters/conditional-rendering'
     | '/chapters/context'
@@ -226,6 +237,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/chapters/component-design'
     | '/chapters/components-props'
     | '/chapters/conditional-rendering'
     | '/chapters/context'
@@ -247,6 +259,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ChaptersComponentDesignRoute: typeof ChaptersComponentDesignRoute
   ChaptersComponentsPropsRoute: typeof ChaptersComponentsPropsRoute
   ChaptersConditionalRenderingRoute: typeof ChaptersConditionalRenderingRoute
   ChaptersContextRoute: typeof ChaptersContextRoute
@@ -394,11 +407,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChaptersComponentsPropsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chapters/component-design': {
+      id: '/chapters/component-design'
+      path: '/chapters/component-design'
+      fullPath: '/chapters/component-design'
+      preLoaderRoute: typeof ChaptersComponentDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ChaptersComponentDesignRoute: ChaptersComponentDesignRoute,
   ChaptersComponentsPropsRoute: ChaptersComponentsPropsRoute,
   ChaptersConditionalRenderingRoute: ChaptersConditionalRenderingRoute,
   ChaptersContextRoute: ChaptersContextRoute,

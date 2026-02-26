@@ -98,6 +98,13 @@ export const chapters: Chapter[] = [
 		category: "Intermediate",
 	},
 	{
+		title: "Component API Design",
+		description:
+			"Design better component APIs with primitive props, discriminated unions, composition patterns, and avoid common pitfalls like inner component definitions.",
+		slug: "component-design",
+		category: "Intermediate",
+	},
+	{
 		title: "React Rendering",
 		description:
 			"Understand when and why React re-renders components, and how element identity determines whether a subtree is skipped.",
