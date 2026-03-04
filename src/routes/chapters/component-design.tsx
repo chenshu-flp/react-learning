@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { memo, useState } from "react";
+import { memo, useRef, useState } from "react";
 import ChapterLayout from "#/components/ChapterLayout";
 import CodeBlock from "#/components/CodeBlock";
 
@@ -9,7 +9,12 @@ export const Route = createFileRoute("/chapters/component-design")({
 
 // --- Section 1: Object prop vs primitive props ---
 
-function UserCardPrimitive({ name, title }: { name: string; title: string }) {
+function UserCardPrimitive({
+	name,
+	title,
+	renderCount,
+}: { name: string; title: string; renderCount: { current: number } }) {
+	renderCount.current++;
 	return (
 		<div className="bg-gray-800 rounded-lg p-3 flex items-center gap-3">
 			<div className="w-8 h-8 rounded-full bg-cyan-700 flex items-center justify-center text-xs font-bold">
@@ -25,7 +30,14 @@ function UserCardPrimitive({ name, title }: { name: string; title: string }) {
 
 const MemoizedPrimitive = memo(UserCardPrimitive);
 
-function UserCardObject({ user }: { user: { name: string; title: string } }) {
+function UserCardObject({
+	user,
+	renderCount,
+}: {
+	user: { name: string; title: string };
+	renderCount: { current: number };
+}) {
+	renderCount.current++;
 	return (
 		<div className="bg-gray-800 rounded-lg p-3 flex items-center gap-3">
 			<div className="w-8 h-8 rounded-full bg-cyan-700 flex items-center justify-center text-xs font-bold">
@@ -43,8 +55,8 @@ const MemoizedObject = memo(UserCardObject);
 
 function PropShapeDemo() {
 	const [count, setCount] = useState(0);
-	const renderCountPrimitive = useState({ current: 0 })[0];
-	const renderCountObject = useState({ current: 0 })[0];
+	const renderCountPrimitive = useRef(0);
+	const renderCountObject = useRef(0);
 
 	return (
 		<div className="bg-gray-900 rounded-lg p-6 space-y-4">
@@ -69,9 +81,7 @@ function PropShapeDemo() {
 					<MemoizedPrimitive
 						name="Alice"
 						title="Developer"
-						ref={() => {
-							renderCountPrimitive.current++;
-						}}
+						renderCount={renderCountPrimitive}
 					/>
 					<RenderCount
 						label="Renders"
@@ -86,9 +96,7 @@ function PropShapeDemo() {
 					</h4>
 					<MemoizedObject
 						user={{ name: "Alice", title: "Developer" }}
-						ref={() => {
-							renderCountObject.current++;
-						}}
+						renderCount={renderCountObject}
 					/>
 					<RenderCount
 						label="Renders"
